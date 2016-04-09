@@ -1,5 +1,7 @@
 <?
+date_default_timezone_set('Europe/Moscow');
 	include 'inc/headers.inc.php';
+	include 'inc/cookie.inc.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,11 +22,22 @@
 		<div id="content">
 			<!-- Заголовок -->
 			<h1><?= $header?></h1>
+			<blockquote>
+<?
+		if($visitCounter==1){
+			echo "<p> Cпасибо, что зашли на огонек </p>";
+		} else {
+			$times = date('d-m-Y G:i:s', $lastVisit);
+			echo "<p> Вы зашли к нам $visitCounter раз </p>\n
+			<p>Последнее посещение: $times </p>";
+		}
+?>
+			</blockquote>
 			<!-- Заголовок -->
 			<!-- Область основного контента -->
 			<?php
 				include 'inc/routing.inc.php';
-			?>	
+			?>
 			<!-- Область основного контента -->
 		</div>
 		<div id="nav">
