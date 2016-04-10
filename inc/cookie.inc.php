@@ -14,12 +14,16 @@ function IncrementCounter()
 {
   global $visitCounter;
   $visitCounter++;
-  setcookie("visitCounter",$visitCounter);
+  SaveCookie("visitCounter",$visitCounter);
 }
 
 function SaveLastVisit($name)
 {
   global $lastVisit;
   $lastVisit = time();
-  setcookie("lastVisit",$lastVisit);
+  SaveCookie("lastVisit",$lastVisit);
+}
+
+function SaveCookie($prop, $value) {
+  setcookie($prop,$value);
 }
